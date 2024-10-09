@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snaptic Grid</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="p-16 relative">
+    <div class="w-4/5 h-4/5 absolute bg-zinc-100 z-0 blur-3xl"></div>
+    <section
+      class="grid-container grid grid-cols-7 gap-4 w-full max-w-4xl z-10"
+    >
+      <div
+        class="main-panel col-span-4 border border-zinc-300 rounded-xl shadow-xl w-full bg-zinc-100"
+      >
+        <!-- Starting state of the panel -->
+        <div class="start-state flex flex-col m-8">
+          <!-- Introduction -->
+          <h1 class="text-3xl font-medium mb-4">Snaptic Grid</h1>
+
+          <!-- Desc -->
+          <div class="flex flex-col gap-2">
+            <p>
+              At MindRove, we use a game called Snaptic Grid to test how
+              precisely you can control a computer using Snaptic devices.
+            </p>
+
+            <p>
+              The goal of the game is to click targets on a grid as fast as
+              possible while minimizing misclicks.
+            </p>
+          </div>
+
+          <!-- Input for customizing the grid size -->
+          <div class="mt-4 flex flex-col gap-2">
+            <label for="grid-size">Grid Size:</label>
+            <input
+              type="number"
+              id="grid-size"
+              min="5"
+              max="30"
+              value="10"
+              step="1"
+              class="bg-zinc-100 border border-zinc-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
+          <div class="mt-12">
+            <button
+              id="start-game"
+              class="px-6 py-3 bg-black hover:bg-zinc-800 text-white rounded-xl text-2xl"
+            >
+              Start Game
+            </button>
+          </div>
+        </div>
+
+        <!-- In game state of the panel -->
+        <div class="in-game-state">
+          <!-- Grid container -->
+          <div
+            id="grid-container"
+            class="flex flex-col gap-0 rounded-xl border border-zinc-800 overflow-hidden w-full"
+          ></div>
+        </div>
+
+        <!-- End game state of the panel -->
+        <div class="end-state m-8">
+          <div>
+            <div id="score-text" class="text-3xl font-medium mb-4"></div>
+            <div class="flex flex-col gap-2">
+              <p>The average result using Snaptic devices is 20.</p>
+            </div>
+          </div>
+
+          <!-- Name input after game ends -->
+          <div id="name-input-container" class="mt-4 flex flex-col gap-2">
+            <label for="player-name">Enter Your Name: </label>
+            <input
+              type="text"
+              id="player-name"
+              class="bg-zinc-100 border border-zinc-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
+          <!-- Restart button (hidden initially) -->
+          <div class="mt-12 flex flex-row gap-4">
+            <button
+              id="submit-name"
+              class="px-6 py-3 bg-black hover:bg-zinc-800 text-white rounded-xl text-2xl"
+            >
+              Save Result
+            </button>
+            <button
+              id="restart-game"
+              class="px-6 py-3 bg-zinc-200 hover:bg-zinc-300 text-black rounded-xl text-2xl"
+            >
+              Restart Game
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-panel col-span-3 p-4 rounded-xl shadow-sm">
+        <div class="in-game-state">
+          <!-- Timer display -->
+          <div class="text-3xl">
+            <span class="font-bold">Time Left:</span>
+            <span id="timer"></span>
+          </div>
+
+          <!-- BPS display -->
+          <div class="text-3xl">
+            <span class="font-bold">BPS:</span>
+            <span id="bps">0.0</span>
+          </div>
+
+          <!-- Net Target Per Minute display -->
+          <div class="text-3xl">
+            <span class="font-bold">NTPM:</span>
+            <span id="score"></span>
+          </div>
+        </div>
+
+        <div class="end-state"></div>
+
+        <!-- Leaderboard container -->
+        <div class="flex flex-col start-end-state">
+          <h2 class="text-3xl font-medium mb-4">Leaderboard</h2>
+          <ul id="leaderboard-list"></ul>
+        </div>
+      </div>
+    </section>
+    <h1></h1>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
