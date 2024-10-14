@@ -90,7 +90,7 @@ function createGrid(size) {
     for (let j = 0; j < size; j++) {
       let cell = document.createElement("div");
       cell.classList.add("grid-item", "border-1", "border-black");
-      cell.addEventListener("click", () => handleClick(cell));
+      cell.addEventListener("mousedown", () => handleClick(cell));
       row.appendChild(cell);
     }
 
